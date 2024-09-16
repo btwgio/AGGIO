@@ -1,13 +1,13 @@
 import json 
 
 class Cobrador:
-    def __init__ (self, id:int, nome:str, celular:str, placa_carro:str, arma:str, id_agiota:int):
+    def __init__ (self, id:int, nome:str, celular:str,endereco: str, placa_veiculo:str):
         self.__id = id 
         self.__nome = nome
         self.__celular = celular 
-        self.__placa_carro = placa_carro
-        self.__arma = arma
-        self.__id_agiota = id_agiota
+        self.__endereco = endereco
+        self.__placa_veiculo = placa_veiculo
+        #self.__id_agiota = id_agiota
 
     def get_id(self):
         return self.__id 
@@ -15,10 +15,10 @@ class Cobrador:
         return self.__nome 
     def get_celular(self):
         return self.__celular
-    def get_placa_carro(self):
-        return self.__placa_carro 
-    def get_arma(self):
-        return self.__arma
+    def get_placa_veiculo(self):
+        return self.__placa_veiculo
+    def get_endereco(self):
+        return self.__endereco
     def get_id_agiota(self):
         return self.__id_agiota 
     
@@ -28,15 +28,15 @@ class Cobrador:
         self.__nome = nome 
     def set_celular(self, celular:str):
         self.__celular = celular 
-    def set_placa_carro(self, placa_carro:str):
-        self.__placa_carro = placa_carro
-    def set_arma(self, arma:str):
-        self.__arma = arma
+    def set_placa_veiculo(self, placa_veiculo:str):
+        self.__placa_veiculo = placa_veiculo
+    def set_arma(self, endereco:str):
+        self.__endereco = endereco
     def set_id_agiota(self, id_agiota:int):
         self.__id_agiota = id_agiota
 
     def __str__(self):
-        return f"{self.__id} - {self.__nome} - {self.__celular} - {self.__placa_carro} - {self.__arma} - {self.__id_agiota}"
+        return f"{self.__id} - {self.__nome} - {self.__celular} - {self.__placa_veiculo} - {self.__endereco}"
 
 class Cobradores:
     cobradores = []
