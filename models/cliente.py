@@ -31,40 +31,42 @@ class Cliente:
         self.saldo = saldo'''
 
     def __str__(self):
-        return f"{self.id} - {self.nome} - {self.celular} - {self.endereco}R$"
+        return f"{self.id} - {self.nome} - {self.celular} - {self.endereco}"
 
 class Clientes:
     clientes = []
     
     @classmethod
-    def inserir(cls, obj):      # create - C
-        cls.abrir()             # abre a lista de objetos do arquivo
-        id = 0                  # cálculo do id do novo objeto
+    def inserir(cls, obj):     
+        cls.abrir()             
+        id = 0                  
         for x in cls.clientes:
             if x.id > id: id = x.id
         id += 1    
-        obj.id = id          # novo objeto recebe o id calculado
-        cls.clientes.append(obj) # insere o objeto a lista
-        cls.salvar()            # salva o arquivo
+        obj.id = id          
+        cls.clientes.append(obj) 
+        cls.salvar()            
     @classmethod
-    def listar(cls):            # read - R
+    def listar(cls):           
         cls.abrir()
         return cls.clientes 
     @classmethod
     def listar_id(cls, id):           
         cls.abrir() 
-        for x in cls.clientes:   # percorre a lista procurando o objeto com o id informado
+        for x in cls.clientes:   
             if x.id == id: return x
         return None      
     @classmethod
     def atualizar(cls, c):
         x = cls.listar_id(c.id)
         if x != None:
-            x.desc = c.desc
+            x.nome = c.nome
+            x.celular = c.celular
+            x.endereco = c.endereco
             cls.salvar()
     @classmethod
     def excluir(cls, obj):
-        x = cls.listar_id(obj.id) # x é o objeto que já está na lista com o mesmo id do objeto novo
+        x = cls.listar_id(obj.id) 
         if x != None: 
             cls.clientes.remove(x)
             cls.salvar()

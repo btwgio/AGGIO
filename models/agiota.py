@@ -75,12 +75,12 @@ class Agiotas:
             cls.salvar()
     @classmethod
     def salvar(cls):    
-        with open("./agiotas.json", mode="w") as arquivo:
+        with open("agiotas.json", mode="w") as arquivo:
             json.dump(cls.agiotas, arquivo, default = vars)
     @classmethod
     def abrir(cls):
         cls.agiotas = []
-        with open("./agiotas.json", mode="r") as arquivo:
+        with open("agiotas.json", mode="r") as arquivo:
             texto_arquivo = json.load(arquivo)
             for obj in texto_arquivo:
                 c = Agiota(obj["id"], obj["nome"], obj["celular"], obj["placa_carro"], obj["arma"], obj["credito"])

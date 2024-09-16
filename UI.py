@@ -15,6 +15,7 @@ class UIa:
             if op == 2: UIa.cliente_listar()
             if op == 3: UIa.cliente_atualizar()
             if op == 4: UIa.cliente_excluir()
+            if op == 5: UIa.agiota_inserir()
     @staticmethod
     def cliente_inserir():
         #id = int(input("Informe o id: "))
@@ -22,8 +23,8 @@ class UIa:
         celular = input("Informe o celular: ")
         endereco = input("Informe o endereço: ")
         #saldo = input("Informe o saldo: ")
-       
         View.cliente_inserir(nome, celular, endereco)
+
     @staticmethod
     def cliente_listar():
         for cliente in View.cliente_listar(): 
@@ -35,12 +36,21 @@ class UIa:
         nome = input("Informe o novo nome: ")
         celular = input("Informe o novo celular: ")
         endereco = input("Informe o novo endereco: ")
-    
         View.cliente_atualizar(id, nome, celular, endereco)
+
     @staticmethod
     def cliente_excluir():
         UIa.cliente_listar()
         id = int(input("Informe o id do cliente a ser excluído: "))
         View.cliente_excluir(id)
+
+    @staticmethod
+    def agiota_inserir():
+        #id = int(input("Informe o id: "))
+        nome = input("Informe o nome: ")
+        celular = input("Informe o celular: ")
+        endereco = input("Informe o endereço: ")
+        credito = input("Informe o credito: ")
+        View.inserir_agiota(nome, celular, endereco, credito)
 
 UIa.main()

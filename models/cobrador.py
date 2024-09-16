@@ -42,28 +42,28 @@ class Cobradores:
     cobradores = []
     
     @classmethod
-    def inserir(cls, obj):      # create - C
-        cls.abrir()             # abre a lista de objetos do arquivo
-        id = 0                  # cálculo do id do novo objeto
+    def inserir(cls, obj):      
+        cls.abrir()             
+        id = 0                  
         for x in cls.cobradores:
             if x.get_id() > id: id = x.get_id()
         id += 1    
-        obj.set_id(id)          # novo objeto recebe o id calculado
-        cls.cobradores.append(obj) # insere o objeto a lista
-        cls.salvar()            # salva o arquivo
+        obj.set_id(id)         
+        cls.cobradores.append(obj) 
+        cls.salvar()            
     @classmethod
-    def listar(cls):            # read - R
+    def listar(cls):           
         cls.abrir()
         return cls.cobradores  
     @classmethod
     def listar_id(cls, id):           
         cls.abrir() 
-        for x in cls.cobradores:   # percorre a lista procurando o objeto com o id informado
+        for x in cls.cobradores:   #
             if x.get_id() == id: return x
         return None      
     @classmethod
     def atualizar(cls, obj):
-        x = cls.listar_id(obj.get_id()) # x é o objeto que já está na lista com o mesmo id do objeto novo
+        x = cls.listar_id(obj.get_id()) 
         if x != None:
             x.set_nome(obj.get_nome())
             x.set_celular(obj.get_celular())
@@ -73,7 +73,7 @@ class Cobradores:
             cls.salvar()
     @classmethod
     def excluir(cls, obj):
-        x = cls.listar_id(obj.get_id()) # x é o objeto que já está na lista com o mesmo id do objeto novo
+        x = cls.listar_id(obj.get_id()) 
         if x != None: 
             cls.cobradores.remove(x)
             cls.salvar()
