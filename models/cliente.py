@@ -1,85 +1,33 @@
-import json
+import json 
+from models.usuario import Usuario
+from models.modelo import Modelo
 
-class Cliente:
-    def __init__ (self, id, nome, celular, endereco):
-        self.id = id              #id do cliente. por ex.: nathan tem o ID 40 e esse nome o identifica no sistema
-        self.nome = nome          #nome do cliente
-        self.celular = celular    #celular do cliente 
-        self.endereco = endereco  #endereco do cliente
-        #self.saldo = saldo  
-
-    def get_id(self):
-        return self.id 
-    def get_nome(self): 
-        return self.nome 
-    def get_celular(self):
-        return self.celular
-    def get_endereco(self):
-        return self.endereco  
-    '''def get_saldo(self):
-        return self.saldo'''
-    
-    def set_id(self, id):
-        self.id = id
-    def set_nome(self, nome): 
-        self.nome = nome 
-    def set_celular(self, celular):
-        self.celular = celular 
-    def set_endereco(self, endereco):
-        self.endereco = endereco 
-    '''def set_saldo(self, saldo:int):
-        self.saldo = saldo'''
+class Cliente(Usuario):
+    def __init__ (self, id:int, nome:str, celular:str, endereco:str, saldo:float):
+        super().__init__(id, nome, celular, endereco) # ID, nome, número de celular e endereço do cliente
+        self.set_saldo(saldo)                         # saldo do cliente   
+    def get_saldo(self):
+        return self.__saldo
+    def set_saldo(self, saldo:int):
+        self.__saldo = saldo
 
     def __str__(self):
-        return f"{self.id} - {self.nome} - {self.celular} - {self.endereco}"
+        return f"{super().get_id()} - {super().get_nome()} - {super().get_celular()} - {super().get_endereco()} - {self.get_saldo()}"
 
-class Clientes:
-    clientes = []
-    
-    @classmethod
-    def inserir(cls, obj):     
-        cls.abrir()             
-        id = 0                  
-        for x in cls.clientes:
-            if x.id > id: id = x.id
-        id += 1    
-        obj.id = id          
-        cls.clientes.append(obj) 
-        cls.salvar()            
-    @classmethod
-    def listar(cls):           
-        cls.abrir()
-        return cls.clientes 
-    @classmethod
-    def listar_id(cls, id):           
-        cls.abrir() 
-        for x in cls.clientes:   
-            if x.id == id: return x
-        return None      
-    @classmethod
-    def atualizar(cls, c):
-        x = cls.listar_id(c.id)
-        if x != None:
-            x.nome = c.nome
-            x.celular = c.celular
-            x.endereco = c.endereco
-            cls.salvar()
-    @classmethod
-    def excluir(cls, obj):
-        x = cls.listar_id(obj.id) 
-        if x != None: 
-            cls.clientes.remove(x)
-            cls.salvar()
+class Clientes(Modelo):
     @classmethod
     def salvar(cls):    
-        with open("clientes.json", mode="w") as arquivo:
-            json.dump(cls.clientes, arquivo, default = vars)
+        with open("../clientes.json", mode="w") as arquivo:
+            json.dump(cls.objetos, arquivo, default = vars)
+
     @classmethod
     def abrir(cls):
-        cls.clientes = []
-        with open("clientes.json", mode="r") as arquivo:
-            texto_arquivo = json.load(arquivo)
-            for obj in texto_arquivo:
-                c = Cliente(obj["id"], obj["nome"], obj["celular"], obj["endereco"])
-                cls.clientes.append(c)
-
+        cls.objetos = []
+        try:
+          with open("../clientes.json", mode="r") as arquivo:
+              texto_arquivo = json.load(arquivo)
+              for obj in texto_arquivo:
+                  c = Cliente(obj["id"], obj["nome"], obj["celular"], obj["endereco"], obj["saldo"])
+                  cls.objetos.append(c)
+        except FileNotFoundError:
+          pass 
