@@ -1,4 +1,4 @@
-from views import View
+from view import View
 
 class UIa:
     @staticmethod
