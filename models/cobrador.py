@@ -18,7 +18,7 @@ class Cobrador(Usuario):
     def __str__(self):
         return f"{super().get_id()} - {super().get_nome()} - {super().get_celular()} - {super().get_endereco()} - {self.__placa_veiculo} - {self.__id_agiota}"
 
-class Cobradores:
+class Cobradores(Modelo):
     @classmethod
     def salvar(cls):    
         with open("../cobradores.json", mode="w") as arquivo:
