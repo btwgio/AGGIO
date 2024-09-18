@@ -26,7 +26,7 @@ class Parcela:
     def set_valor(self, valor:float):
         self.valor = valor
     def __str__(self):
-        return f'{self.id} - {self.id_emprestimo} - {self.data_vencimento.strftime('%d/%m/%Y %H:%M')} - {self.valor}R$ - {self.pago}'
+        return f'ID: {self.id} - ID_EMPRESTIMO: {self.id_emprestimo} - DATA_DE_VENCIMENTO: {self.data_vencimento.strftime('%d/%m/%Y %H:%M')} - VALOR: {self.valor}R$ - PAGO: {self.pago}'
 
 class Parcelas(Modelo):
     @classmethod

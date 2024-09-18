@@ -12,7 +12,7 @@ class Cliente(Usuario):
         self.saldo = saldo
 
     def __str__(self):
-        return f"{super().get_id()} - {super().get_nome()} - {super().get_celular()} - {super().get_endereco()} - {self.get_saldo()}"
+        return f"ID: {super().get_id()} - NOME: {super().get_nome()} - CELULAR: {super().get_celular()} - ENDEREÇO: {super().get_endereco()} - SALDO: {self.get_saldo()}R$"
 
 class Clientes(Modelo):
     @classmethod

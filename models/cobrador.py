@@ -16,7 +16,7 @@ class Cobrador(Usuario):
     def set_id_agiota(self, id_agiota:int):
         self.id_agiota = id_agiota
     def __str__(self):
-        return f"{super().get_id()} - {super().get_nome()} - {super().get_celular()} - {super().get_endereco()} - {self.placa_veiculo} - {self.id_agiota}"
+        return f"ID: {super().get_id()} - NOME: {super().get_nome()} - CELULAR: {super().get_celular()} - ENDERECO: {super().get_endereco()} - PLACA DO VEICULO: {self.placa_veiculo} - ID_AGIOTA: {self.id_agiota}"
 
 class Cobradores(Modelo):
     @classmethod

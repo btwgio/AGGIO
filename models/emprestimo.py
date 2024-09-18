@@ -70,7 +70,7 @@ class Emprestimo:
         self.juros = juros
 
     def __str__(self):
-        return f"{self.id} - {self.id_agiota} - {self.id_cliente} - {self.id_cobrador} - {self.solicitado} - {self.aprovado} - {self.quitado} - {self.cobrado} - {self.valor} - {self.duracao} - {self.data.strftime('%d/%m/%Y %H:%M')} - {self.juros}"
+        return f"ID: {self.id} - ID_AGIOTA: {self.id_agiota} - ID_CLIENTE: {self.id_cliente} - ID_COBRADOR: {self.id_cobrador} - SOLICITADO: {self.solicitado} - APROVADO: {self.aprovado} - QUITADO: {self.quitado} - COBRADO: {self.cobrado} - VALOR DO EMPRÉSTIMO: {self.valor} - DURAÇÃO EM MESES: {self.duracao} - DATA DO EMPRÉSTIMO: {self.data.strftime('%d/%m/%Y %H:%M')} - JUROS: {self.juros}"
 
 class Emprestimos(Modelo):
     @classmethod
