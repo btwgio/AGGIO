@@ -5,18 +5,18 @@ class Usuario:
         self.set_celular(celular)
         self.set_endereco(endereco)
     def set_id(self, id:int):
-        self.__id = id
+        self.id = id
     def set_nome(self, nome:str):
-        self.__nome = nome
+        self.nome = nome
     def set_celular(self, celular:str):
-        self.__celular = celular
+        self.celular = celular
     def set_endereco(self, endereco:str):
-        self.__endereco = endereco
+        self.endereco = endereco
     def get_id(self):
-        return self.__id
+        return self.id
     def get_nome(self):
-        return self.__nome
+        return self.nome
     def get_celular(self):
-        return self.__celular
+        return self.celular
     def get_endereco(self):
-        return self.__endereco
+        return self.endereco

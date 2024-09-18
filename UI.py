@@ -22,7 +22,8 @@ class UIa:
         nome = input("Informe o nome: ")
         celular = input("Informe o celular: ")
         endereco = input("Informe o endereço: ")
-        View.cliente_inserir(nome, celular, endereco)
+        saldo = float(input("Informe o saldo: "))
+        View.cliente_inserir(nome, celular, endereco, saldo)
     @staticmethod
     def cliente_listar():
         for cliente in View.cliente_listar(): 
