@@ -3,7 +3,7 @@ from models.usuario import Usuario
 from models.modelo import Modelo
 
 class Cobrador(Usuario):
-    def __init__ (self, id:int, nome:str, celular:str, endereco: str, placa_veiculo:str, id_agiota:int):
+    def __init__(self, id:int, nome:str, celular:str, endereco: str, placa_veiculo:str, id_agiota:int):
         super().__init__(id, nome, celular, endereco)
         self.set_id_agiota(id_agiota)
         self.set_placa_veiculo(placa_veiculo)

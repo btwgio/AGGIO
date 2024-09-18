@@ -3,7 +3,7 @@ from models.usuario import Usuario
 from models.modelo import Modelo
 
 class Agiota(Usuario):
-    def __init__ (self, id: int, nome: str, celular: str, endereco: str, credito: float):
+    def __init__(self, id: int, nome: str, celular: str, endereco: str, credito: float):
         super().__init__(id, nome, celular, endereco) # ID, nome, número de celular e endereço do agiota
         self.set_credito(credito)                     # quanto crédito ele tem disponível para emprestar
     def get_credito(self):

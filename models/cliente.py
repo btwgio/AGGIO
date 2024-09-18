@@ -3,7 +3,7 @@ from models.usuario import Usuario
 from models.modelo import Modelo
 
 class Cliente(Usuario):
-    def __init__ (self, id:int, nome:str, celular:str, endereco:str, saldo:float):
+    def __init__(self, id:int, nome:str, celular:str, endereco:str, saldo:float):
         super().__init__(id, nome, celular, endereco) # ID, nome, número de celular e endereço do cliente
         self.set_saldo(saldo)                         # saldo do cliente   
     def get_saldo(self):
