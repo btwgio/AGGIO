@@ -28,7 +28,7 @@ class Cobradores(Modelo):
     def abrir(cls):
         cls.objetos = []
         try:
-          with open("../agiotas.json", mode="r") as arquivo:
+          with open("../cobradores.json", mode="r") as arquivo:
               texto_arquivo = json.load(arquivo)
               for obj in texto_arquivo:
                   c = Cobrador(obj["id"], obj["nome"], obj["celular"], obj["endereco"], obj["placa_veiculo"], obj["id_agiota"])
