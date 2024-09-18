@@ -11,14 +11,17 @@ class UI:
         op = 0
         while op != 4:
             op = UI.menu()
+            print("==============================================================================")
             if op == 1: # Cliente
                 op1 = 0 
                 while op1 != 6:
                     op1 = UI.cliente_menu()
                     if op1 == 1: # Criar conta cliente
                         UI.cliente_inserir()
+                        print("==============================================================================")
                     if op1 == 2: # Editar uma conta cliente
                         UI.cliente_atualizar()
+                        print("==============================================================================")
                     if op1 == 3: # Solicitar empréstimo
                         print('Em desenvolvimento!')
                     if op1 == 4: # Ver minhas parcelas
@@ -26,8 +29,10 @@ class UI:
                     if op1 == 5: # Pagar parcela
                         print('Em desenvolvimento!')
                     if op1 == 6: # Voltar
+                        print("==============================================================================")
                         break
                     if op1 == 7: # Sair
+                        print("==============================================================================")
                         op = 4
                         break
                     else: print("Opção inválida")
@@ -35,54 +40,77 @@ class UI:
             if op == 2:  # Agiota
                 op1 = 0 
                 while op1 != 12:
-                    op1 = UI.cliente_menu()
-                        if op1 == 1: # Criar conta agiota
-                            UI.agiota_inserir()
-                        if op1 == 2: # Editar uma conta agiota
-                            UI.agiota_atualizar()
-                        if op1 == 3: # Atualizar cliente
-                            print('Em desenvolvimento!')
-                        if op1 == 4: # Atualizar cobrador
-                            print('Em desenvolvimento!')
-                        if op1 == 5: # Listar agiotas
-                            print('Em desenvolvimento!')
-                        if op1 == 6: # Listar clientes
-                            print('Em desenvolvimento!')
-                        if op1 == 7: # Listar cobradores
-                            print('Em desenvolvimento!')
-                        if op1 == 8: # Ver empréstimos
-                            print('Em desenvolvimento!')
-                        if op1 == 9: # Ver parcelas
-                            print('Em desenvolvimento!')
-                        if op1 == 10: # Aceitar empréstimo
-                            print('Em desenvolvimento!')
-                        if op1 == 11: # Voltar
-                            break
-                        if op1 == 12: # Sair
-                            op = 4
-                            break
-                        else: print("Opção inválida")
+                    op1 = UI.agiota_menu()
+                    if op1 == 1: # Criar conta agiota
+                        UI.agiota_inserir()
+                        print("==============================================================================")
+                    if op1 == 2: # Editar uma conta agiota
+                        UI.agiota_atualizar()
+                        print("==============================================================================")
+                    if op1 == 3: # Atualizar cliente
+                        print('Em desenvolvimento!')
+                    if op1 == 4: # Atualizar cobrador
+                        print('Em desenvolvimento!')
+                    if op1 == 5: # Listar agiotas
+                        UI.agiota_listar()
+                        print("==============================================================================")
+                    if op1 == 6: # Listar clientes
+                        UI.cliente_listar()
+                        print("==============================================================================")
+                    if op1 == 7: # Listar cobradores
+                        UI.cobrador_listar()
+                        print("==============================================================================")
+                    if op1 == 8: # Ver empréstimos
+                        print('Em desenvolvimento!')
+                    if op1 == 9: # Ver parcelas
+                        print('Em desenvolvimento!')
+                    if op1 == 10: # Aceitar empréstimo
+                        print('Em desenvolvimento!')
+                    if op1 == 11: # Voltar
+                        print("==============================================================================")
+                        break
+                    if op1 == 12: # Sair
+                        op = 4
+                        break
+                    else: print("Opção inválida")
             if op == 3: #Cobrador
-                UI.cobrador_menu()
-                print('Em desenvolvimento!')
+                op1 = 0 
+                while op1 != 12:
+                    op1 = UI.cobrador_menu()
+                    if op1 == 1: # Criar conta cobrador
+                        UI.cobrador_inserir()
+                        print("==============================================================================")
+                    if op1 == 2: # Editar uma conta cobrador
+                        UI.cobrador_atualizar()
+                        print("==============================================================================")
+                    if op1 == 3: # Ver parcelas não pagas
+                        print('Em desenvolvimento!')
+                    if op1 == 4: # Cobrar parcelas
+                        print('Em desenvolvimento!')
+                    if op1 == 5: # Voltar
+                        print("==============================================================================")
+                        break
+                    if op1 == 6: # Sair
+                        op = 4
+                        break
             if op == 4: # Fim
                 print("Obrigado por usar AGGIO!")
                 break
             else: print("Opção inválida")
     
     def cliente_menu():
-        print("Seja bem-vindo senhor, o que deseja?")
+        print("Seja bem-vindo senhor(a) cliente, o que deseja?")
         print("1-Criar uma conta\n2-Editar minha conta\n3-Solicitar empréstimo\n4-Ver minhas parcelas\n5-Pagar parcela\n6-Voltar\n7-Sair")
         return int(input("Escolha uma opção: "))
     
     def agiota_menu():
-        print("Seja bem-vindo senhor, o que deseja?")
+        print("Seja bem-vindo senhor(a) agiota, o que deseja?")
         print("1-Criar uma conta\n2-Atualizar agiotas\n3-Atualizar clientes\n4-Atualizar cobradores\n5-Ver agiotas\n6-Ver clientes\n7-Ver cobradores\n8-Ver empréstimos\n9-Ver parcelas\n10-Aceitar empréstimo\n11-Voltar\n12-Sair")
         return int(input("Escolha uma opção: "))
     
     def cobrador_menu():
-        print("Seja bem-vindo senhor, o que deseja?")
-        print("1-Criar uma conta\n2-Editar minha conta\n3-Ver parcelas\n4-Cobrar parcela\n5-Voltar\n6-Sair")
+        print("Seja bem-vindo senhor(a) cobrador(a), o que deseja?")
+        print("1-Criar uma conta\n2-Editar minha conta\n3-Ver parcelas não pagas\n4-Cobrar parcela\n5-Voltar\n6-Sair")
         return int(input("Escolha uma opção: "))
     
     def cliente_inserir():
