@@ -11,7 +11,7 @@ class Agiota(Usuario):
     def set_credito(self, credito: float):
         self.credito = credito
     def __str__(self):
-        return f" {super().get_id()} - {super().get_nome()} - {super().get_celular()} - {super().get_endereco()} - {self.__credito} R$"
+        return f" {super().get_id()} - {super().get_nome()} - {super().get_celular()} - {super().get_endereco()} - {self.credito} R$"
 
 class Agiotas(Modelo):
     @classmethod
