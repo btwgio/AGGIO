@@ -69,7 +69,7 @@ class View:
     #EMPRESTIMO
     @staticmethod
     def emprestimo_inserir(id_agiota, id_cliente, id_cobrador, valor, data, duracao, juros):
-        e = Emprestimo(0, 0, id_cliente, 0, True, False, False, False, valor, duracao, data, juros)
+        e = Emprestimo(0, id_agiota, id_cliente, id_cobrador, True, False, False, False, valor, duracao, data, juros)
         Emprestimos.inserir(e)
     @staticmethod
     def emprestimo_listar():

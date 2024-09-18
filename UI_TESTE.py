@@ -1,4 +1,5 @@
 from view import View
+from datetime import datetime
 
 class UI:
     @staticmethod
@@ -23,11 +24,14 @@ class UI:
                         UI.cliente_atualizar()
                         print("==============================================================================")
                     if op1 == 3: # Solicitar empréstimo
-                        print('Em desenvolvimento!')
+                        UI.emprestimo_inserir()
+                        print("==============================================================================")
                     if op1 == 4: # Ver minhas parcelas
-                        print('Em desenvolvimento!')
+                        UI.parcela_listar_cliente()
+                        print("==============================================================================")
                     if op1 == 5: # Pagar parcela
-                        print('Em desenvolvimento!')
+                        UI.parcela_pagar()
+                        print("==============================================================================")
                     if op1 == 6: # Voltar
                         print("==============================================================================")
                         break
@@ -36,7 +40,6 @@ class UI:
                         op = 4
                         break
                     else: print("Opção inválida")
-                    
             if op == 2:  # Agiota
                 op1 = 0 
                 while op1 != 12:
@@ -48,9 +51,11 @@ class UI:
                         UI.agiota_atualizar()
                         print("==============================================================================")
                     if op1 == 3: # Atualizar cliente
-                        print('Em desenvolvimento!')
+                        UI.cliente_atualizar()
+                        print("==============================================================================")
                     if op1 == 4: # Atualizar cobrador
-                        print('Em desenvolvimento!')
+                        UI.cobrador_atualizar()
+                        print("==============================================================================")
                     if op1 == 5: # Listar agiotas
                         UI.agiota_listar()
                         print("==============================================================================")
@@ -61,11 +66,14 @@ class UI:
                         UI.cobrador_listar()
                         print("==============================================================================")
                     if op1 == 8: # Ver empréstimos
-                        print('Em desenvolvimento!')
+                        UI.emprestimo_listar()
+                        print("==============================================================================")
                     if op1 == 9: # Ver parcelas
-                        print('Em desenvolvimento!')
+                        UI.parcela_listar()
+                        print("==============================================================================")
                     if op1 == 10: # Aceitar empréstimo
-                        print('Em desenvolvimento!')
+                        UI.emprestimo_aceitar()
+                        print("==============================================================================")
                     if op1 == 11: # Voltar
                         print("==============================================================================")
                         break
@@ -84,9 +92,11 @@ class UI:
                         UI.cobrador_atualizar()
                         print("==============================================================================")
                     if op1 == 3: # Ver parcelas não pagas
-                        print('Em desenvolvimento!')
+                        UI.parcelas_listar_nao_pago()
+                        print("==============================================================================")
                     if op1 == 4: # Cobrar parcelas
-                        print('Em desenvolvimento!')
+                        UI.emprestimo_cobrar()
+                        print("==============================================================================")
                     if op1 == 5: # Voltar
                         print("==============================================================================")
                         break
@@ -130,6 +140,7 @@ class UI:
         View.cliente_atualizar(id, nome, celular, endereco, saldo)
     
     def cliente_listar():
+        print("Lista de clientes:")
         for cliente in View.cliente_listar(): 
             print(cliente)
         
@@ -150,6 +161,7 @@ class UI:
         View.agiota_atualizar(id, nome, celular, endereco, credito)
         
     def agiota_listar():
+        print("Lista de agiotas:")
         for agiota in View.agiota_listar(): 
             print(agiota)
     
@@ -174,8 +186,83 @@ class UI:
         View.cobrador_atualizar(id, nome, celular, endereco, placa, id_agiota)
         
     def cobrador_listar():
+        print("Lista de cobradores:")
         for cobrador in View.cobrador_listar(): 
             print(cobrador)
-        
     
+    def emprestimo_inserir():
+        UI.cliente_listar()
+        id_cliente = int(input("Qual o ID do cliente que pediu o emprestimo: "))
+        valor = float(input("Digite qual valor você quer pegar emprestado: "))
+        print("Lista de agiotas disponíveis: ")
+        qtd = 0
+        for a in View.agiota_listar():
+            if a.get_credito() >= valor:
+                print(a)
+                qtd = qtd + 1
+        if qtd == 0: 
+            print("Não tem agiotas disponíveis")
+            return None
+        id_agiota = int(input("Escolha o ID do agiota que você quer pegar o emprestimo: "))   
+        for c in View.cobrador_listar():
+            if c.get_id_agiota() == id_agiota:
+                id_cobrador = c.get_id()
+                break
+        data = datetime.today()
+        duracao = int(input("Quantos meses de emprestimo: "))
+        juros = float(input("Quanto de juros: "))
+        View.emprestimo_inserir(id_agiota, id_cliente, id_cobrador, valor, data, duracao, juros)
+        
+    def emprestimo_aceitar():
+        print("Lista de emprestimos:")
+        for e in View.emprestimo_listar():
+            if e.get_aprovado == False:
+                print(e)
+        id = int(input("Informe o ID de qual emprestimo você quer aprovar: "))
+        aux = View.emprestimo_listar_id(id)
+        View.emprestimo_atualizar(aux.get_id(),aux.get_id_agiota(),aux.get_id_cliente(),aux.get_id_cobrador(),aux.get_solicitado(),True,aux.get_quitado(),aux.get_cobrado(),aux.get_valor(),aux.get_duracao(),aux.get_data(),aux.get_juros())
+        print("Emprestimo aceito")
+        
+    def emprestimo_listar():
+        print("Lista de emprestimos:")
+        for emprestimo in View.emprestimo_listar():
+            print(emprestimo)
+    
+    def emprestimo_cobrar():
+        UI.emprestimo_listar()
+        id = int(input("Qual emprestimo você quer cobrar: "))
+        
+        aux = View.emprestimo_listar_id(id)
+        View.emprestimo_atualizar(aux.get_id(),aux.get_id_agiota(),aux.get_id_cliente(),aux.get_id_cobrador(),aux.get_solicitado(),aux.get_aprovado(),aux.get_quitado(),True,aux.get_valor(),aux.get_duracao(),aux.get_data(),aux.get_juros())
+        print("Emprestimo cobrado!")
+    
+    def parcela_listar():
+        print("Lista de parcelas:")
+        for parcela in View.parcela_listar():
+            print(parcela)
+            
+    def parcela_listar_cliente():
+        UI.cliente_listar()
+        id = int(input("Qual o id do cliente quer ver as parcelas: "))
+        for e in View.emprestimo_listar():
+            if e.get_id_cliente == id:
+                print(e)
+        id = int(input("De qual emprestimo são as parcelas: "))
+        for p in View.emprestimo_listar():
+            if p.get_id_emprestimo == id:
+                print(p)
+                
+    def parcela_pagar():
+        UI.parcela_listar_cliente()
+        id = int(input("Qual o ID da parcela que você quer pagar: "))
+        
+        aux = View.parcela_listar_id(id)
+        View.parcela_atualizar(aux.get_id(), aux.get_id_emprestimo(), aux.get_data_vencimento(), aux.get_valor(), True)
+    
+    def parcelas_listar_nao_pago():
+        for p in View.parcela_listar():
+            if p.get_pago() == False:
+                print(p)
+    
+        
 UI.main()

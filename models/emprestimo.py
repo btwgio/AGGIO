@@ -70,7 +70,7 @@ class Emprestimo:
         self.juros = juros
 
     def __str__(self):
-        return f"ID: {self.id} - ID_AGIOTA: {self.id_agiota} - ID_CLIENTE: {self.id_cliente} - ID_COBRADOR: {self.id_cobrador} - SOLICITADO: {self.solicitado} - APROVADO: {self.aprovado} - QUITADO: {self.quitado} - COBRADO: {self.cobrado} - VALOR DO EMPRÉSTIMO: {self.valor} - DURAÇÃO EM MESES: {self.duracao} - DATA DO EMPRÉSTIMO: {self.data.strftime('%d/%m/%Y %H:%M')} - JUROS: {self.juros}"
+        return f"ID: {self.id} - ID_AGIOTA: {self.id_agiota} - ID_CLIENTE: {self.id_cliente} - ID_COBRADOR: {self.id_cobrador} - SOLICITADO: {self.solicitado} - APROVADO: {self.aprovado} - QUITADO: {self.quitado} - COBRADO: {self.cobrado} - VALOR DO EMPRÉSTIMO: {self.valor} - DURAÇÃO EM MESES: {self.duracao} - DATA DO EMPRÉSTIMO: {self.data.strftime('%d/%m/%Y')} - JUROS: {self.juros}"
 
 class Emprestimos(Modelo):
     @classmethod
@@ -85,7 +85,7 @@ class Emprestimos(Modelo):
           with open("./emprestimos.json", mode="r") as arquivo:
               texto_arquivo = json.load(arquivo)
               for obj in texto_arquivo:
-                  e = Emprestimo(obj["id"], obj["id_agiota"], obj["id_cliente"], obj["id_cobrador"], obj["solicitado"], obj["aprovado"], obj["quitado"], obj["cobrado"], obj["valor"], obj["duracao"], datetime.datetime.strptime(obj["data"], "%d/%m/%Y %H:%M"), obj["juros"])
+                  e = Emprestimo(obj["id"], obj["id_agiota"], obj["id_cliente"], obj["id_cobrador"], obj["solicitado"], obj["aprovado"], obj["quitado"], obj["cobrado"], obj["valor"], obj["duracao"], datetime.strptime(obj["data"], "%d/%m/%Y"), obj["juros"])
                   cls.objetos.append(e)
         except FileNotFoundError:
           pass 
