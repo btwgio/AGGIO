@@ -31,10 +31,40 @@ class UI:
                         op = 4
                         break
                     else: print("Opção inválida")
+                    
             if op == 2:  # Agiota
-                UI.agiota_menu()
+                op1 = 0 
+                while op1 != 12:
+                    op1 = UI.cliente_menu()
+                        if op1 == 1: # Criar conta agiota
+                            UI.agiota_inserir()
+                        if op1 == 2: # Editar uma conta agiota
+                            UI.agiota_atualizar()
+                        if op1 == 3: # Atualizar cliente
+                            print('Em desenvolvimento!')
+                        if op1 == 4: # Atualizar cobrador
+                            print('Em desenvolvimento!')
+                        if op1 == 5: # Listar agiotas
+                            print('Em desenvolvimento!')
+                        if op1 == 6: # Listar clientes
+                            print('Em desenvolvimento!')
+                        if op1 == 7: # Listar cobradores
+                            print('Em desenvolvimento!')
+                        if op1 == 8: # Ver empréstimos
+                            print('Em desenvolvimento!')
+                        if op1 == 9: # Ver parcelas
+                            print('Em desenvolvimento!')
+                        if op1 == 10: # Aceitar empréstimo
+                            print('Em desenvolvimento!')
+                        if op1 == 11: # Voltar
+                            break
+                        if op1 == 12: # Sair
+                            op = 4
+                            break
+                        else: print("Opção inválida")
             if op == 3: #Cobrador
                 UI.cobrador_menu()
+                print('Em desenvolvimento!')
             if op == 4: # Fim
                 print("Obrigado por usar AGGIO!")
                 break
@@ -43,6 +73,16 @@ class UI:
     def cliente_menu():
         print("Seja bem-vindo senhor, o que deseja?")
         print("1-Criar uma conta\n2-Editar minha conta\n3-Solicitar empréstimo\n4-Ver minhas parcelas\n5-Pagar parcela\n6-Voltar\n7-Sair")
+        return int(input("Escolha uma opção: "))
+    
+    def agiota_menu():
+        print("Seja bem-vindo senhor, o que deseja?")
+        print("1-Criar uma conta\n2-Atualizar agiotas\n3-Atualizar clientes\n4-Atualizar cobradores\n5-Ver agiotas\n6-Ver clientes\n7-Ver cobradores\n8-Ver empréstimos\n9-Ver parcelas\n10-Aceitar empréstimo\n11-Voltar\n12-Sair")
+        return int(input("Escolha uma opção: "))
+    
+    def cobrador_menu():
+        print("Seja bem-vindo senhor, o que deseja?")
+        print("1-Criar uma conta\n2-Editar minha conta\n3-Ver parcelas\n4-Cobrar parcela\n5-Voltar\n6-Sair")
         return int(input("Escolha uma opção: "))
     
     def cliente_inserir():
