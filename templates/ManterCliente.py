@@ -26,9 +26,10 @@ class ManterClienteUI:
         nome = st.text_input("Informe o nome")
         celular = st.text_input("Informe o Celular")
         endereco = st.text_input("Informe o endereço")
+        saldo = st.text_input("Informe o saldo")
         if st.button("Inserir"):
             try:
-                View.cliente_inserir(nome, celular, endereco) #, senha)
+                View.cliente_inserir(nome, celular, endereco, saldo) #, senha)
                 st.success("Cliente inserido com sucesso")
                 time.sleep(2)
                 st.rerun()
@@ -42,26 +43,27 @@ class ManterClienteUI:
         else:
             op = st.selectbox("Atualização de Clientes", clientes)
             nome = st.text_input("Informe o novo nome", op.get_nome())
-            email = st.text_input("Informe o novo número de celular", op.get_email())
-            fone = st.text_input("Informe o novo endereco", op.get_fone())
+            celular = st.text_input("Informe o novo número de celular", op.get_celular())
+            endereco = st.text_input("Informe o novo endereco", op.get_endereco())
+            saldo = st.text_input("Informe o novo saldo", op.get_saldo())
             #senha = st.text_input("Informe a nova senha")
 
         if st.button("Atualizar"):
             id = op.get_id()
-            View.cliente_atualizar(id, nome, email, fone) #, senha)
-            st.success("Cliente atualizado com sucesso")
+            View.cliente_atualizar(id, nome, celular, endereco, saldo) #, senha)
+            st.success("Dados do Cliente atualizados com sucesso")
             time.sleep(2)
             st.rerun()
 
-  def excluir():
-    clientes = View.cliente_listar()
-    if len(clientes) == 0:
-      st.write("Nenhum cliente cadastrado")
-    else:
-      op = st.selectbox("Exclusão de Clientes", clientes)
-      if st.button("Excluir"):
-        id = op.get_id()
-        View.cliente_excluir(id)
-        st.success("Cliente excluído com sucesso")
-        time.sleep(2)
-        st.rerun()
+    def excluir():
+        clientes = View.cliente_listar()
+        if len(clientes) == 0:
+            st.write("Nenhum cliente cadastrado")
+        else:
+         op = st.selectbox("Exclusão de Clientes", clientes)
+         if st.button("Excluir"):
+            id = op.get_id()
+            View.cliente_excluir(id)
+            st.success("Cliente excluído com sucesso")
+            time.sleep(2)
+            st.rerun()

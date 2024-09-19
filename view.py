@@ -58,7 +58,7 @@ class View:
     def cobrador_listar_id(id:int):
         return Cobradores.listar_id(id)
     @staticmethod
-    def cobrador_atualizar(id:int, nome:str, celular:str, endereco:str, placa:str, id_agiota):
+    def cobrador_atualizar(id:int, nome:str, celular:str, endereco:str, placa:str, id_agiota:int):
         c = Cobrador(id, nome, celular, endereco, placa, id_agiota)
         Cobradores.atualizar(c)
     @staticmethod
